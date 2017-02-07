@@ -3,24 +3,23 @@ package levelPieces;
 import gameEngine.Drawable;
 import gameEngine.InteractionResult;
 
-public class Tree extends GamePiece implements Drawable{
+//this will be the one that is only drawable
+public class Tree implements Drawable {
 
+	char symbol;
+	int location;
 	
 	public Tree()
 	{
-		super('T', 1);
+		symbol = 'T';
+		location = 1;
 	}
 	
-	public Tree(char symbol, int location) {
-		super(symbol, location);
+	public Tree(int location) {
+		this.location = location;
 	}
 
-	@Override
-	public InteractionResult interact(Drawable[] pieces, int playerLocation) {
-		// TODO Auto-generated method stub
-		return null;
+	public void draw() {
+		System.out.print(symbol);
 	}
-	
-
-
 }
