@@ -1,0 +1,19 @@
+Kevin Pham
+Jesse Halbach
+
+At least 5 pieces that interact:
+1. WhackAMole   - kills player if stepped on
+2. Claymore     - hits player is on or located 1 square left of the claymore
+3. MagicBox     - gives player a point if stepped on
+4. FakeMagicBox - does nothing when stepped on
+5. Star         - portal to the next level if player is on or 1 space left or right of the portal
+
+At least two objects that move (implement Moveable):
+1. WhackAMole   - moves randomly within 5 spaces of the user
+2. MagicBox     - moves from end to end of the map and turns around when edge is met
+
+At least 1 piece should only be Drawable:
+1. Tree         - fo' show
+
+There are two levels that were created in levelGame. They both have the same pieces, but
+have them placed in different places.

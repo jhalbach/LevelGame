@@ -40,12 +40,18 @@ public class Player implements Drawable {
 		damagePoints = 0; 
 		levelPoints = 0;
 	}
+	
+	/*
+	 * Prints out the symbol to represent the player.
+	 */
 	@Override
 	public void draw() {
 		System.out.print('P');
 	}
 
-	
+	/* 
+	 * Determines if player meets requirements to proceed to the next level.
+	 */
 	public boolean canAdvance() {
 		if (levelPoints >= POINTS_TO_ADVANCE || playerStatus == PlayerStatus.ADVANCING) {
 			return true;
@@ -53,26 +59,44 @@ public class Player implements Drawable {
 		return false;
 	}
 	
+	/*
+	 * Determines if player should be considered dead.
+	 */
 	public boolean isDead() {
 		return (playerStatus == PlayerStatus.DEAD || damagePoints >= POINTS_TO_DIE);
 	}
 	
+	/*
+	 * Increments player's wealth.
+	 */
 	public void addPoint() {
 		levelPoints++;
 	}
 	
+	/*
+	 * Increments the amount of pain the player is suffering.
+	 */
 	public void takeDamage() {
 		damagePoints++;
 	}
 	
+	/*
+	 * Declares the player's status as dead.
+	 */
 	public void killed() {
 		playerStatus = PlayerStatus.DEAD;
 	}
 	
+	/*
+	 * Declares the player meets requirements to proceed to next level.
+	 */
 	public void wonAdvance() {
 		playerStatus = PlayerStatus.ADVANCING;
 	}
 	
+	/*
+	 * Moves the player according to user input.
+	 */
 	public void doMove(Drawable[] pieces) {
 		// ensure the player moves each turn
 		boolean moved = false; 
