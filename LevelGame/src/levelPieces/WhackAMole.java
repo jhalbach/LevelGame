@@ -1,5 +1,7 @@
 package levelPieces;
 
+import java.util.Random;
+
 import gameEngine.Drawable;
 import gameEngine.InteractionResult;
 import gameEngine.Moveable;
@@ -20,9 +22,14 @@ public class WhackAMole extends GamePiece implements Moveable  {	// will randoml
 	 * Used to generate a random number to place the mole on the map.
 	 */
 	private int getRandNum() {
-		int n = 5;
-		int delta = (-n + (int)(Math.random() * ((n + n) + 1))) % 6;	//generation of random code from the Internet
-		return delta;
+		Random random = new Random();
+		int randNum = (random.nextInt(11) - 6);
+		//System.out.println(randNum);
+		return randNum;
+		
+		//int n = 5;
+		//int delta = (-n + (int)(Math.random() * ((n + n) + 1)) % 5);	//generation of random code from the Internet
+		//return (int) delta;
 	}
 	
 	// Places mole within n spaces from the player.
@@ -31,11 +38,12 @@ public class WhackAMole extends GamePiece implements Moveable  {	// will randoml
 		int randNum = getRandNum();
 		//System.out.println("location: " + getLocation());
 		int arrayIndex = (randNum + playerLocation) % gameEngine.GameEngine.BOARD_SIZE  + 1;
-		while (arrayIndex < 0 || arrayIndex >= gameEngine.GameEngine.BOARD_SIZE || pieces[arrayIndex] != null) {
+		while (arrayIndex < 0 || arrayIndex >= gameEngine.GameEngine.BOARD_SIZE || pieces[arrayIndex] != null ||
+			   arrayIndex == playerLocation) {
 			randNum = getRandNum();
 			arrayIndex = (randNum + playerLocation) % gameEngine.GameEngine.BOARD_SIZE + 1;
 		}
-	
+		//System.out.println(arrayIndex);
 		pieces[getLocation()] = null; // remove previous symbol
 		setLocation( (randNum + playerLocation) % gameEngine.GameEngine.BOARD_SIZE  + 1); //board size + 1,
 		pieces[getLocation()] = this;

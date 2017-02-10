@@ -21,6 +21,7 @@ public class MagicBox extends GamePiece implements Moveable {
 	public void move(Drawable[] pieces, int playerLocation) {
 		pieces[getLocation()] = null; // remove previous symbol
 		
+		// Change direction if piece is at end of board
 		switch (getLocation())
 		{
 		case 0:
@@ -32,6 +33,7 @@ public class MagicBox extends GamePiece implements Moveable {
 			default:
 		}
 		
+		// Move a space if there is nothing in the way. Otherwise, turn back.
 		switch (moveRight) {
 		case 1:
 			if (pieces[this.getLocation() + 1] == null) {
@@ -43,10 +45,7 @@ public class MagicBox extends GamePiece implements Moveable {
 			}
 			break;
 		case 0:
-		    if (pieces[this.getLocation() - 2] == null) {
-		    	setLocation(this.getLocation() - 2);
-		    }
-			else if (pieces[this.getLocation() - 1] == null) {
+		    if (pieces[this.getLocation() - 1] == null) {
 				setLocation(this.getLocation() - 1);
 			}
 			else {
